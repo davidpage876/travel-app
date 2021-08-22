@@ -26,6 +26,17 @@
             <p>© 2021 David C. Page</p>
         </div>
     </footer>
+
+    <script>
+        // Run service worker.
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                if (Client.buildEnv !== 'development') {
+                    navigator.serviceWorker.register('/service-worker.js');
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

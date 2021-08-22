@@ -1,3 +1,5 @@
+// Build environment.
+const buildEnv = process.env.NODE_ENV;
 
 // Scripts.
 import { hello } from './js/hello';
@@ -6,3 +8,5 @@ import { hello } from './js/hello';
 import './styles/main.scss';
 
 hello();
+
+export { buildEnv }
