@@ -4,6 +4,7 @@
   "description": "A travel planning web app",
   "main": "index.js",
   "scripts": {
+    "start": "node src/server/server.js",
     "build-prod": "webpack --config webpack.prod.js",
     "build-dev": "webpack --config webpack.dev.js",
     "dev-server": "webpack serve --open --port 8000 --config webpack.dev.js",
@@ -23,10 +24,13 @@
   },
   "homepage": "https://github.com/davidpage876/travel-app#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "html-webpack-plugin": "^5.3.2",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.0.0",
-    "clean-webpack-plugin": "^4.0.0-alpha.0",
-    "html-webpack-plugin": "^5.3.2"
+    "webpack-dev-server": "^4.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5"
   }
 }
