@@ -1,3 +1,8 @@
+// Retrieve API keys from environment.
+// Expects "API_KEY=********************************".
+const dotenv = require('dotenv');
+dotenv.config();
+const apiKey = process.env.API_KEY;
 
 // Set up express server.
 const path = require('path');
