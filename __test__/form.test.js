@@ -36,5 +36,8 @@ describe("Testing form validation", () => {
         expect(() => validateDate('2020-00-25')).toThrow(Error);
         expect(() => validateDate('2020-08-00')).toThrow(Error);
         expect(() => validateDate('200-08-25')).toThrow(Error);
+        expect(() => validateDate('YYYY-08-25')).toThrow(Error);
+        expect(() => validateDate('2020-MM-25')).toThrow(Error);
+        expect(() => validateDate('2020-0210-31')).toThrow(Error);
     });
 });
