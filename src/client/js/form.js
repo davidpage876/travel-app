@@ -27,7 +27,7 @@ function validateDestination(dest) {
  * @returns The validated string.
  */
 function validateDate(date) {
-
+    return date;
 }
 
 export { validateDestination, validateDate }
