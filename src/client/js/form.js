@@ -20,7 +20,9 @@ function validateDestination(dest) {
 /**
  * Validates the given date input.
  *
- * Expects the format YYYY-MM-DD, where the date is today or in the future.
+ * Expects the format YYYY-MM-DD.
+ *
+ * Todo: Handle invalid dates and only allow today or future dates.
  *
  * @param {string} date Input date string.
  * @throws {Error} Thrown if validation failed.
