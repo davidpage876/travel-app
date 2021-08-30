@@ -13,7 +13,7 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     devServer: {
-        static: './dist',
+        static: './src/client',
     },
     module: {
         rules: [
