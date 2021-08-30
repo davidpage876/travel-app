@@ -25,4 +25,16 @@ describe("Testing form validation", () => {
         expect(validateDate('2010-06-01')).toBe('2010-06-01');
         expect(validateDate('2010-06-30')).toBe('2010-06-30');
     });
+    test('validateDate() on bad input', () => {
+        expect(() => validateDate('2020-8-25')).toThrow(Error);
+        expect(() => validateDate('2020-08-5')).toThrow(Error);
+        expect(() => validateDate('08-25-2020')).toThrow(Error);
+        expect(() => validateDate('2020 08 25')).toThrow(Error);
+        expect(() => validateDate('20-08-25')).toThrow(Error);
+        expect(() => validateDate('2020-08-32')).toThrow(Error);
+        expect(() => validateDate('2020-13-25')).toThrow(Error);
+        expect(() => validateDate('2020-00-25')).toThrow(Error);
+        expect(() => validateDate('2020-08-00')).toThrow(Error);
+        expect(() => validateDate('200-08-25')).toThrow(Error);
+    });
 });

@@ -27,7 +27,11 @@ function validateDestination(dest) {
  * @returns The validated string.
  */
 function validateDate(date) {
-    return date;
+    if (/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/.test(date)) {
+        return date;
+    } else {
+        throw new Error('Incorrect date format. Must be YYYY-MM-DD');
+    }
 }
 
 export { validateDestination, validateDate }
