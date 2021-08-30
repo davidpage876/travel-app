@@ -5,9 +5,9 @@ describe("Testing form validation", () => {
         expect(validateDestination).toBeDefined();
     })
     test("validateDestination() on good input", () => {
-        expect(() => validateDestination('Tokyo')).not.toThrow(Error);
-        expect(() => validateDestination('San Francisco')).not.toThrow(Error);
-        expect(() => validateDestination('London')).not.toThrow(Error);
+        expect(validateDestination('Tokyo')).toBe('Tokyo');
+        expect(validateDestination('San Francisco')).toBe('San Francisco');
+        expect(validateDestination(' London  ')).toBe('London');
     })
     test("validateDestination() on blank input", () => {
         expect(() => validateDestination('')).toThrow(Error);

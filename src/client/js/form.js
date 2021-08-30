@@ -6,9 +6,13 @@
  *
  * @param {string} dest Input destination string.
  * @throws {Error} Thrown if validation failed.
+ * @returns The validated string (trimmed).
  */
 function validateDestination(dest) {
-    if (!dest.trim()) {
+    const trimmed = dest.trim();
+    if (trimmed.length > 0) {
+        return trimmed;
+    } else {
         throw new Error('Destination cannot be blank');
     }
 }
@@ -20,6 +24,7 @@ function validateDestination(dest) {
  *
  * @param {string} date Input date string.
  * @throws {Error} Thrown if validation failed.
+ * @returns The validated string.
  */
 function validateDate(date) {
 
