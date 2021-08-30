@@ -8,7 +8,7 @@
  * @throws {Error} Thrown if validation failed.
  */
 function validateDestination(dest) {
-
+    throw new Error('Destination cannot be blank');
 }
 
 /**
