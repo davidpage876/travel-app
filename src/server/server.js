@@ -4,6 +4,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 const apiKey = process.env.API_KEY;
 
+// Set up weather retrieval service.
+const weather = require('./weather');
+const weatherService = new weather.WeatherbitService("*******", "en");
+
 // Set up express server.
 const path = require('path');
 const express = require('express');
@@ -21,6 +25,27 @@ const fetch = require('node-fetch');
 // Retrieve HTML on root get route.
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../dist/index.html'));
+});
+
+// Request weather forecast POST route.
+app.post('/weather', async (req, res) => {
+    console.log(req.body);
+    try {
+
+        // Make API request.
+        const lat = req.body.lat;
+        const lon = req.body.lon;
+        const date = req.body.date;
+        const response = await weatherService.get(lat, lon, date);
+
+        // Send results to client.
+        res.send(response)
+        console.log(response);
+
+    } catch (error) {
+        console.log('Request failed: ' + error);
+        res.status(500).json({ error });
+    }
 });
 
 // Example post route API request.

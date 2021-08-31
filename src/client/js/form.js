@@ -1,3 +1,4 @@
+import { postData } from './request';
 
 /**
  * Validates the given destination input.
@@ -36,4 +37,52 @@ function validateDate(date) {
     }
 }
 
-export { validateDestination, validateDate }
+/**
+ * Set up the main input form.
+ */
+ function setUp() {
+    const HOST = 'http://localhost:8080';
+    const inputForm = document.getElementById('input-form');
+    const destInput = inputForm.dest;
+    const dateInput = inputForm.date;
+
+    // Ensure date input cannot be earlier than today.
+    dateInput.min = new Date().toISOString().slice(0, 10);
+
+    // Set up event listener for form submit.
+    inputForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        // Validate input.
+        try {
+            destInput = validateDestination(destInput);
+            dateInput = validateDate(dateInput);
+
+        } catch (error) {
+            console.log(`Invalid input error: ${error}`);
+
+            // TODO: Show message to user.
+            return;
+        }
+
+        // Submit form.
+        try {
+            console.log('Submitting form...');
+
+            // TODO: Get lat/lon from GeoNames API.
+
+            const response = await postData(`${HOST}/weather`, { });
+
+            // TODO: Show weather info to user.
+            console.log(response);
+
+        } catch (error) {
+            console.log(`Request failed: ${error}`);
+
+            // TODO: Show message to user.
+            return;
+        }
+    })
+}
+
+export { validateDestination, validateDate, setUp }

@@ -3,17 +3,14 @@ const buildEnv = process.env.NODE_ENV;
 
 // Scripts.
 import { hello } from './js/hello';
+import { setUp } from './js/form';
 
 // Styles.
 import './styles/main.scss';
 
 hello();
 
-// Ensure date input cannot be earlier than today.
-(() => {
-    const inputForm = document.getElementById('input-form');
-    const dateInput = inputForm.date;
-    dateInput.min = new Date().toISOString().slice(0, 10);
-})();
+// Set up main form.
+setUp();
 
 export { buildEnv }
