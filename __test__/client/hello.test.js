@@ -1,4 +1,4 @@
-import { hello } from "../src/client/js/hello";
+import { hello } from "../../src/client/js/hello";
 
 describe("Testing test environment", () => {
     test("hello() exists", () => {
