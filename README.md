@@ -25,6 +25,7 @@ Start the server with the following command:
 
 The following API keys are expected to be on provided in the environment (or a .env file):
 
+    GEONAMES_USER=***
     API_KEY=********************************
     API_KEY2=********************************
     Todo: Update with required keys.

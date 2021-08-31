@@ -1,8 +1,7 @@
 // Retrieve API keys from environment.
-// Expects "API_KEY=********************************".
 const dotenv = require('dotenv');
 dotenv.config();
-const apiKey = process.env.API_KEY;
+const geonamesUser = process.env.GEONAMES_USER;
 
 // Set up weather retrieval service.
 const weather = require('./weather');
