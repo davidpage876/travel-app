@@ -21,9 +21,17 @@ app.use(cors());
 // Allow us to make fetch-style requests on the server.
 const fetch = require('node-fetch');
 
-// Retrieve HTML on root get route.
+// Retrieve HTML on root GET route.
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../../dist/index.html'));
+});
+
+// Request latitude and longitude for location GET route.
+// Expects parameter: ?loc=___ .
+app.get('/latlon', async (req, res) => {
+    console.log(req.query.loc);
+
+
 });
 
 // Request weather forecast POST route.

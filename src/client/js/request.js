@@ -1,4 +1,21 @@
 /**
+ * Performs a general GET request for the specified url resource on the server.
+ * See server.js for specific routes.
+ * @param {string} url The url resource to request.
+ * @returns {Promise} Returns a promise containing data from the server when fulfilled.
+ */
+ const getData = async (url = '') => {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log('Error: ', error);
+        throw error;
+    }
+}
+
+/**
  * Performs a general POST request for the specified url resource to the server.
  * See server.js for specific routes.
  * @param {string} url The url resource to post to.
@@ -23,4 +40,4 @@
     }
 }
 
-export { postData }
+export { getData, postData }

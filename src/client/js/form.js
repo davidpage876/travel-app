@@ -1,4 +1,4 @@
-import { postData } from './request';
+import { getData, postData } from './request';
 
 /**
  * Validates the given destination input.
@@ -52,11 +52,13 @@ function validateDate(date) {
     // Set up event listener for form submit.
     inputForm.addEventListener('submit', async (event) => {
         event.preventDefault();
+        let dest = destInput.value;
+        let date = dateInput.value;
 
         // Validate input.
         try {
-            destInput = validateDestination(destInput);
-            dateInput = validateDate(dateInput);
+            dest = validateDestination(dest);
+            date = validateDate(date);
 
         } catch (error) {
             console.log(`Invalid input error: ${error}`);
@@ -69,12 +71,18 @@ function validateDate(date) {
         try {
             console.log('Submitting form...');
 
-            // TODO: Get lat/lon from GeoNames API.
+            // Get latitude and longitude for location.
+            const location = await getData(`${HOST}/latlon?loc=${encodeURI(dest)}`);
 
-            const response = await postData(`${HOST}/weather`, { });
+            // Look up weather for location and date.
+            const weather = await postData(`${HOST}/weather`, {
+                lat: location.lat,
+                lon: location.lon,
+                date: dateInput
+            });
 
             // TODO: Show weather info to user.
-            console.log(response);
+            console.log(weather);
 
         } catch (error) {
             console.log(`Request failed: ${error}`);
