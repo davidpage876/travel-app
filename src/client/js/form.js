@@ -73,16 +73,18 @@ function validateDate(date) {
 
             // Get latitude and longitude for location.
             const location = await getData(`${HOST}/latlon?loc=${encodeURI(dest)}`);
+            console.log(location.lat);
+            console.log(location.lon);
 
             // Look up weather for location and date.
-            const weather = await postData(`${HOST}/weather`, {
+            /*const weather = await postData(`${HOST}/weather`, {
                 lat: location.lat,
                 lon: location.lon,
                 date: dateInput
             });
 
             // TODO: Show weather info to user.
-            console.log(weather);
+            console.log(weather);*/
 
         } catch (error) {
             console.log(`Request failed: ${error}`);

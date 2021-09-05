@@ -29,9 +29,30 @@ app.get('/', (req, res) => {
 // Request latitude and longitude for location GET route.
 // Expects parameter: ?loc=___ .
 app.get('/latlon', async (req, res) => {
-    console.log(req.query.loc);
+    const loc = req.query.loc;
+    console.log(loc);
 
+    // API request url.
+    const base = 'http://api.geonames.org/geoCodeAddressJSON';
+    const requestUrl = `${base}?q=${encodeURI(loc)}&username=${geonamesUser}`;
+    console.log(requestUrl);
 
+    // Make API request and send the results to client.
+    try {
+
+        const response = await fetch(requestUrl);
+        //console.log(response);
+        const data = await response.json();
+        console.log(data);
+        res.json({
+            lat: data.address.lat,
+            lon: data.address.lng
+        });
+
+    } catch (error) {
+        console.log('Request failed: ' + error);
+        res.status(500).json({ error });
+    }
 });
 
 // Request weather forecast POST route.
@@ -63,7 +84,6 @@ app.post('/example', async (req, res) => {
     // API request url.
     const base = '';
     const requestUrl = `${base}?key=`;
-
     console.log(requestUrl);
 
     // Make API request and send the results to client.
