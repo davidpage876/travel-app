@@ -1,3 +1,6 @@
+// Dependencies.
+import 'regenerator-runtime/runtime';
+
 // Build environment.
 const buildEnv = process.env.NODE_ENV;
 
