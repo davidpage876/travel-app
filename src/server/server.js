@@ -57,6 +57,31 @@ app.get('/latlon', async (req, res) => {
     }
 });
 
+// Request image search GET route.
+app.get('/image', async (req, res) => {
+    const q = req.query.q;
+    console.log(q);
+
+    // API request url.
+    const base = '';
+    const requestUrl = `${base}?key=${pixabayKey}q=${encodeURI(q)}`;
+    console.log(requestUrl);
+
+    // Make API request and send the results to client.
+    try {
+
+        const response = await fetch(requestUrl);
+        console.log(response);
+        const data = await response.json();
+        console.log(data);
+        res.send(data);
+
+    } catch (error) {
+        console.log('Request failed: ' + error);
+        res.status(500).json({ error });
+    }
+});
+
 // Request weather forecast POST route.
 app.post('/weather', async (req, res) => {
     console.log(req.body);
