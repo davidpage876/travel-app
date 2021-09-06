@@ -27,6 +27,7 @@ The following API keys are expected to be on provided in the environment (or a .
 
     GEONAMES_USER=***
     WEATHERBIT_KEY=********************************
+    PIXABAY_KEY=**********************************
 
 The server runs on port 8080, so to view the client open the following url in your browser:
 

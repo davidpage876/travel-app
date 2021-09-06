@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const geonamesUser = process.env.GEONAMES_USER;
 const weatherbitKey = process.env.WEATHERBIT_KEY;
+const pixabayKey = process.env.PIXABAY_KEY;
 
 // Set up weather retrieval service.
 const weather = require('./weather');
