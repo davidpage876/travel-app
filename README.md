@@ -26,9 +26,7 @@ Start the server with the following command:
 The following API keys are expected to be on provided in the environment (or a .env file):
 
     GEONAMES_USER=***
-    API_KEY=********************************
-    API_KEY2=********************************
-    Todo: Update with required keys.
+    WEATHERBIT_KEY=********************************
 
 The server runs on port 8080, so to view the client open the following url in your browser:
 

@@ -2,10 +2,11 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const geonamesUser = process.env.GEONAMES_USER;
+const weatherbitKey = process.env.WEATHERBIT_KEY;
 
 // Set up weather retrieval service.
 const weather = require('./weather');
-const weatherService = new weather.WeatherbitService("*******", "en");
+const weatherService = new weather.WeatherbitService(weatherbitKey, "en");
 
 // Set up express server.
 const path = require('path');
