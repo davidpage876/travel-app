@@ -1,4 +1,5 @@
 const dateUtilities = require('./date');
+const fetch = require('node-fetch');
 
 /**
  * Weather retrieval service using the Weatherbit API (https://www.weatherbit.io/api).
@@ -11,6 +12,25 @@ function WeatherbitService(key, lang) {
 
     this._key = key;
     this._lang = lang;
+
+    /**
+     * Make API request to given URL endpoint and return response JSON data.
+     *
+     * @param {string} url Endpoint URL to make fetch request to.
+     * @returns {Object} Response JSON data.
+     */
+    this._handleRequest = async function(url) {
+        const result = await fetch(url);
+        try {
+            console.log(result);
+            const response = await result.json();
+            console.log(response);
+            return response;
+        } catch (error) {
+            console.log("Request failed: " + error);
+            res.status(500).json({ error });
+        }
+    }
 
     /**
      * Looks up weather data for the given location at the given date (asynchronous).
@@ -34,6 +54,26 @@ function WeatherbitService(key, lang) {
         const today = new Date();
         const delta = dateUtilities.calculateDaysDelta(today, date);
         console.log(`From today (${today}) to date (${date}): ${delta}`);
+
+        // Retrieve weather data.
+        if (delta === 0) {
+
+            // Get current weather at location.
+            const base = 'https://api.weatherbit.io/v2.0/current';
+            const requestUrl = `${base}?key=${this._key}&lang=${this._lang}&lat=${lat}&lon=${lon}`;
+            console.log(requestUrl);
+            const response = await this._handleRequest(requestUrl);
+            return response;
+
+        } else if (delta <= 16) {
+
+            // Get weather forecast (up to 16 days) at location.
+
+        } else {
+
+            // Get historical weather at location.
+
+        }
     }
 
 }
