@@ -9,7 +9,11 @@
  * If 'to' comes before 'from' the result will be negative.
  */
 function calculateDaysDelta(from, to) {
-    return 0;
+    const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+    const timeDelta = to.getTime() - from.getTime();
+    const dayDelta = timeDelta / MILLISECONDS_PER_DAY;
+
+    return Math.round(dayDelta);
 }
 
 exports.calculateDaysDelta = calculateDaysDelta;
