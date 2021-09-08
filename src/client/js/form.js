@@ -80,7 +80,7 @@ function validateDate(date) {
             const weather = await postData(`${HOST}/weather`, {
                 lat: location.lat,
                 lon: location.lon,
-                date: new Date(date)
+                date: date
             });
 
             // TODO: Show weather info to user.

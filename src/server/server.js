@@ -90,7 +90,7 @@ app.post('/weather', async (req, res) => {
         // Make API request.
         const lat = req.body.lat;
         const lon = req.body.lon;
-        const date = req.body.date;
+        const date = new Date(req.body.date);
         const response = await weatherService.get(lat, lon, date);
 
         // Send results to client.
