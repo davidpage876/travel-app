@@ -35,10 +35,10 @@ function WeatherbitService(key, lang) {
     /**
      * Looks up weather data for the given location at the given date (asynchronous).
      *
-     * If the date is today, returns the current weather.
-     * If the date is in the past, returns historical weather.
-     * If the date is in the future, returns forecast weather when available,
-     * otherwise returning historical weather.
+     * If the date is today, returns the today's weather.
+     * If the date is in the past, returns today's weather (Note: historical weather is not available on free plan).
+     * If the date is in the future, returns forecast weather when available (supports up to 16 days),
+     * otherwise returning today's weather.
      *
      * @abstract
      * @param {Number} lat Location latitude.
@@ -57,16 +57,7 @@ function WeatherbitService(key, lang) {
 
         // Retrieve weather data.
         const commonParams = `key=${this._key}&lang=${this._lang}`;
-        if (delta === 0) {
-
-            // Get current weather at location.
-            const base = 'https://api.weatherbit.io/v2.0/current';
-            const requestUrl = `${base}?${commonParams}&lat=${lat}&lon=${lon}`;
-            console.log(requestUrl);
-            const response = await this._handleRequest(requestUrl);
-            return response;
-
-        } else if (delta <= 16) {
+        if (delta > 0 && delta <= 16) {
 
             // Get weather forecast (up to 16 days) at location.
             const base = 'https://api.weatherbit.io/v2.0/forecast/daily';
@@ -77,7 +68,12 @@ function WeatherbitService(key, lang) {
 
         } else {
 
-            // Get historical weather at location.
+            // Get current weather at location.
+            const base = 'https://api.weatherbit.io/v2.0/current';
+            const requestUrl = `${base}?${commonParams}&lat=${lat}&lon=${lon}`;
+            console.log(requestUrl);
+            const response = await this._handleRequest(requestUrl);
+            return response;
 
         }
     }
