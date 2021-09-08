@@ -1,4 +1,4 @@
-import { validateDestination, validateDate } from "../../src/client/js/form";
+import { validateDestination, validateDate } from "../../src/client/js/app";
 
 describe("Testing form validation", () => {
     test('validateDestination() exists', () => {

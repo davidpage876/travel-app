@@ -38,7 +38,7 @@ function validateDate(date) {
 }
 
 /**
- * Set up the main input form.
+ * Set up the home page including input form.
  */
  function setUp() {
     const HOST = 'http://localhost:8080';
@@ -48,7 +48,6 @@ function validateDate(date) {
 
     // Set the default estimated arrival date to today.
     const today = new Date().toISOString().slice(0, 10);
-    console.log(today);
     dateInput.value = today;
 
     // Ensure date input cannot be earlier than today.
