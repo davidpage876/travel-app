@@ -46,9 +46,9 @@ function WeatherbitService(key, lang) {
      * @param {Date} date Date to look up.
      * @returns {Object} Summary of retrieved weather data.
      * {
-     *      temp: Temperature in Celcius,
-     *      desc: Text weather description,
-     *      icon: Weather icon code (see https://www.weatherbit.io/api/codes)
+     *      temp: {Number} Temperature in Celcius,
+     *      desc: {String} Text weather description,
+     *      icon: {String} Weather icon code (see https://www.weatherbit.io/api/codes)
      * }
      * @throws {Error} Throws if weather retrieval failed.
      */
