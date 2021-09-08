@@ -86,9 +86,18 @@ function validateDate(date) {
                 lon: location.lon,
                 date: date
             });
-
-            // TODO: Show weather info to user.
             console.log(weather);
+
+            // Display results to user.
+            const results = document.getElementById('results');
+            results.innerHTML = `
+                <h2>${dest}</h2>
+                <h3>Weather<sup>*</sup></h3>
+                <p>${weather.desc}</p>
+                <p><span>${weather.icon}</span></p>
+                <p><span>${weather.temp}</span><span title="degrees">°</span><span title="celcius">C</span></p>
+                <aside><p>* Forecasts only available for up to 16 days</p></aside>
+            `;
 
         } catch (error) {
             console.log(`Request failed: ${error}`);
