@@ -5,7 +5,6 @@ import 'regenerator-runtime/runtime';
 const buildEnv = process.env.NODE_ENV;
 
 // Scripts.
-import { hello } from './js/hello';
 import { setUp } from './js/app';
 
 // Styles.

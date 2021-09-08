@@ -103,29 +103,6 @@ app.post('/weather', async (req, res) => {
     }
 });
 
-// Example post route API request.
-app.post('/example', async (req, res) => {
-
-    console.log(req.body);
-
-    // API request url.
-    const base = '';
-    const requestUrl = `${base}?key=`;
-    console.log(requestUrl);
-
-    // Make API request and send the results to client.
-    const result = await fetch(requestUrl);
-    try {
-        console.log(result);
-        const response = await result.json();
-        res.send(response);
-        console.log(response);
-    } catch (error) {
-        console.log("Request failed: " + error);
-        res.status(500).json({ error });
-    }
-});
-
 // Start production server on port 8080.
 const PORT = 8080;
 app.listen(PORT, () => {
