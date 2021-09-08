@@ -9,7 +9,7 @@
  * If 'to' comes before 'from' the result will be negative.
  */
 function calculateDaysDelta(from, to) {
-
+    return 0;
 }
 
 exports.calculateDaysDelta = calculateDaysDelta;
