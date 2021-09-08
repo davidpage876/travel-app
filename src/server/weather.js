@@ -56,11 +56,12 @@ function WeatherbitService(key, lang) {
         console.log(`From today (${today}) to date (${date}): ${delta}`);
 
         // Retrieve weather data.
+        const commonParams = `key=${this._key}&lang=${this._lang}`;
         if (delta === 0) {
 
             // Get current weather at location.
             const base = 'https://api.weatherbit.io/v2.0/current';
-            const requestUrl = `${base}?key=${this._key}&lang=${this._lang}&lat=${lat}&lon=${lon}`;
+            const requestUrl = `${base}?${commonParams}&lat=${lat}&lon=${lon}`;
             console.log(requestUrl);
             const response = await this._handleRequest(requestUrl);
             return response;
@@ -68,6 +69,11 @@ function WeatherbitService(key, lang) {
         } else if (delta <= 16) {
 
             // Get weather forecast (up to 16 days) at location.
+            const base = 'https://api.weatherbit.io/v2.0/forecast/daily';
+            const requestUrl = `${base}?${commonParams}&lat=${lat}&lon=${lon}`;
+            console.log(requestUrl);
+            const response = await this._handleRequest(requestUrl);
+            return response;
 
         } else {
 
