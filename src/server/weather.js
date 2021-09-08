@@ -27,8 +27,8 @@ function WeatherbitService(key, lang) {
             console.log(response);
             return response;
         } catch (error) {
-            console.log("Request failed: " + error);
             res.status(500).json({ error });
+            throw error;
         }
     }
 
