@@ -46,8 +46,13 @@ function validateDate(date) {
     const destInput = inputForm.dest;
     const dateInput = inputForm.date;
 
+    // Set the default estimated arrival date to today.
+    const today = new Date().toISOString().slice(0, 10);
+    console.log(today);
+    dateInput.value = today;
+
     // Ensure date input cannot be earlier than today.
-    dateInput.min = new Date().toISOString().slice(0, 10);
+    dateInput.min = today;
 
     // Set up event listener for form submit.
     inputForm.addEventListener('submit', async (event) => {
