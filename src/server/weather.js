@@ -1,3 +1,5 @@
+const dateUtilities = require('./date');
+
 /**
  * Weather retrieval service using the Weatherbit API (https://www.weatherbit.io/api).
  *
@@ -25,7 +27,14 @@ function WeatherbitService(key, lang) {
      * @returns {Object} Retrieved weather data.
      * @throws {Error} Throws if weather retrieval failed.
      */
-    this.get = async function(lat, lon, date) {}
+    this.get = async function(lat, lon, date) {
+        console.log(`${lat}, ${lon}, ${date}`);
+
+        // Get number of days between today and date.
+        const today = new Date();
+        const delta = dateUtilities.calculateDaysDelta(today, date);
+        console.log(`From today (${today}) to date (${date}): ${delta}`);
+    }
 
 }
 

@@ -77,14 +77,14 @@ function validateDate(date) {
             console.log(location.lon);
 
             // Look up weather for location and date.
-            /*const weather = await postData(`${HOST}/weather`, {
+            const weather = await postData(`${HOST}/weather`, {
                 lat: location.lat,
                 lon: location.lon,
-                date: dateInput
+                date: new Date(date)
             });
 
             // TODO: Show weather info to user.
-            console.log(weather);*/
+            console.log(weather);
 
         } catch (error) {
             console.log(`Request failed: ${error}`);
