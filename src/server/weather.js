@@ -44,7 +44,12 @@ function WeatherbitService(key, lang) {
      * @param {Number} lat Location latitude.
      * @param {Number} lon Location longitude.
      * @param {Date} date Date to look up.
-     * @returns {Object} Retrieved weather data.
+     * @returns {Object} Summary of retrieved weather data.
+     * {
+     *      temp: Temperature in Celcius,
+     *      desc: Text weather description,
+     *      icon: Weather icon code (see https://www.weatherbit.io/api/codes)
+     * }
      * @throws {Error} Throws if weather retrieval failed.
      */
     this.get = async function(lat, lon, date) {
@@ -64,7 +69,13 @@ function WeatherbitService(key, lang) {
             const requestUrl = `${base}?${commonParams}&lat=${lat}&lon=${lon}`;
             console.log(requestUrl);
             const response = await this._handleRequest(requestUrl);
-            return response;
+            const dayData = response.data[delta - 1];
+            const summary = {
+                temp: dayData.temp,
+                desc: dayData.weather.description,
+                icon: dayData.weather.icon
+            };
+            return summary;
 
         } else {
 
@@ -73,7 +84,13 @@ function WeatherbitService(key, lang) {
             const requestUrl = `${base}?${commonParams}&lat=${lat}&lon=${lon}`;
             console.log(requestUrl);
             const response = await this._handleRequest(requestUrl);
-            return response;
+            const dayData = response.data[0];
+            const summary = {
+                temp: dayData.temp,
+                desc: dayData.weather.description,
+                icon: dayData.weather.icon
+            };
+            return summary;
 
         }
     }

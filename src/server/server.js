@@ -91,11 +91,11 @@ app.post('/weather', async (req, res) => {
         const lat = req.body.lat;
         const lon = req.body.lon;
         const date = new Date(req.body.date);
-        const response = await weatherService.get(lat, lon, date);
+        const summary = await weatherService.get(lat, lon, date);
 
-        // Send results to client.
-        res.send(response)
-        console.log(response);
+        // Send summary of results to client.
+        res.send(summary)
+        console.log(summary);
 
     } catch (error) {
         console.log('Request failed: ' + error);
