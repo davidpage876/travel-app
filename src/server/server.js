@@ -50,7 +50,7 @@ app.get('/location', async (req, res) => {
 
     } catch (error) {
         console.log('Request failed: ' + error);
-        res.status(500).json({ error });
+        res.status(500).json(error);
     }
 });
 
@@ -74,7 +74,7 @@ app.get('/image', async (req, res) => {
 
     } catch (error) {
         console.log('Request failed: ' + error);
-        res.status(500).json({ error });
+        res.status(500).json(error);
     }
 });
 
@@ -93,7 +93,7 @@ app.post('/weather', async (req, res) => {
 
     } catch (error) {
         console.log('Request failed: ' + error);
-        res.status(500).json({ error });
+        res.status(500).json(error);
     }
 });
 
