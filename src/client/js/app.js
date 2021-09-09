@@ -58,6 +58,7 @@ function validateDate(date) {
         event.preventDefault();
         let dest = destInput.value;
         let date = dateInput.value;
+        const errorText = document.getElementById('error');
 
         // Validate input.
         try {
@@ -67,7 +68,8 @@ function validateDate(date) {
         } catch (error) {
             console.log(`Invalid input error: ${error}`);
 
-            // TODO: Show message to user.
+            // Display error to user.
+            errorText.innerText = error;
             return;
         }
 
@@ -77,6 +79,9 @@ function validateDate(date) {
 
             // Get latitude and longitude for location.
             const location = await getData(`${HOST}/latlon?loc=${encodeURI(dest)}`);
+            if (location.lat === undefined || location.lon === undefined) {
+                throw new Error('Could not find location');
+            }
             console.log(location.lat);
             console.log(location.lon);
 
@@ -106,8 +111,8 @@ function validateDate(date) {
         } catch (error) {
             console.log(`Request failed: ${error}`);
 
-            // TODO: Show message to user.
-            return;
+            // Display error to user.
+            errorText.innerText = error;
         }
     })
 }

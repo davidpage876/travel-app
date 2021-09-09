@@ -72,6 +72,9 @@ function WeatherbitService(key, lang) {
             console.log(requestUrl);
             const response = await this._handleRequest(requestUrl);
             const dayData = response.data[delta - 1];
+            if (dayData.city_name === undefined) {
+                throw new Error('Could not find location');
+            }
             const summary = {
                 loc: dayData.city_name,
                 timezone: dayData.timezone,
@@ -89,6 +92,9 @@ function WeatherbitService(key, lang) {
             console.log(requestUrl);
             const response = await this._handleRequest(requestUrl);
             const dayData = response.data[0];
+            if (dayData.city_name === undefined) {
+                throw new Error('Could not find location');
+            }
             const summary = {
                 loc: dayData.city_name,
                 timezone: dayData.timezone,
