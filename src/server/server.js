@@ -32,7 +32,6 @@ app.get('/', (req, res) => {
 // Expects parameter: ?loc=___ .
 app.get('/latlon', async (req, res) => {
     const loc = req.query.loc;
-    console.log(loc);
 
     // API request url.
     const base = 'http://api.geonames.org/geoCodeAddressJSON';
@@ -43,9 +42,7 @@ app.get('/latlon', async (req, res) => {
     try {
 
         const response = await fetch(requestUrl);
-        //console.log(response);
         const data = await response.json();
-        console.log(data);
         res.json({
             lat: data.address.lat,
             lon: data.address.lng
@@ -61,7 +58,6 @@ app.get('/latlon', async (req, res) => {
 // Expects parameter: ?q=___ .
 app.get('/image', async (req, res) => {
     const q = req.query.q;
-    console.log(q);
 
     // API request url.
     const base = 'https://pixabay.com/api/';
@@ -73,9 +69,7 @@ app.get('/image', async (req, res) => {
     try {
 
         const response = await fetch(requestUrl);
-        console.log(response);
         const data = await response.json();
-        console.log(data);
         res.send(data);
 
     } catch (error) {
@@ -86,7 +80,6 @@ app.get('/image', async (req, res) => {
 
 // Request weather forecast POST route.
 app.post('/weather', async (req, res) => {
-    console.log(req.body);
     try {
 
         // Make API request.
@@ -97,7 +90,6 @@ app.post('/weather', async (req, res) => {
 
         // Send summary of results to client.
         res.send(summary)
-        console.log(summary);
 
     } catch (error) {
         console.log('Request failed: ' + error);

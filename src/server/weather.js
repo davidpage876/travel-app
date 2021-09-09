@@ -53,12 +53,10 @@ function WeatherbitService(key, lang) {
      * @throws {Error} Throws if weather retrieval failed.
      */
     this.get = async (lat, lon, date) => {
-        console.log(`${lat}, ${lon}, ${date}`);
 
         // Get number of days between today and date.
         const today = new Date();
         const delta = dateUtilities.calculateDaysDelta(today, date);
-        console.log(`From today (${today}) to date (${date}): ${delta}`);
 
         // Retrieve weather data.
         const commonParams = `key=${this._key}&lang=${this._lang}`;
