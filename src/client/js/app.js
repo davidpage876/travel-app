@@ -91,7 +91,8 @@ function validateDate(date) {
             // Display results to user.
             const results = document.getElementById('results');
             results.innerHTML = `
-                <h2 class="results__loc">${dest}</h2>
+                <h2 class="results__loc">${weather.loc}</h2>
+                <p class="results__timezone">Timezone: ${weather.timezone}</p>
                 <h3 class="results__weather">Weather<sup>*</sup></h3>
                 <p class="results__desc">${weather.desc}</p>
                 <p class="results__icon"><span>${weather.icon}</span></p>

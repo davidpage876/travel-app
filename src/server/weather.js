@@ -46,6 +46,8 @@ function WeatherbitService(key, lang) {
      * @param {Date} date Date to look up.
      * @returns {Object} Summary of retrieved weather data.
      * {
+     *      loc: {String} Location name detected,
+     *      timezone: {String} Timezone/country detected,
      *      temp: {Number} Temperature in Celcius,
      *      desc: {String} Text weather description,
      *      icon: {String} Weather icon code (see https://www.weatherbit.io/api/codes)
@@ -71,6 +73,8 @@ function WeatherbitService(key, lang) {
             const response = await this._handleRequest(requestUrl);
             const dayData = response.data[delta - 1];
             const summary = {
+                loc: dayData.city_name,
+                timezone: dayData.timezone,
                 temp: dayData.temp,
                 desc: dayData.weather.description,
                 icon: dayData.weather.icon
@@ -86,6 +90,8 @@ function WeatherbitService(key, lang) {
             const response = await this._handleRequest(requestUrl);
             const dayData = response.data[0];
             const summary = {
+                loc: dayData.city_name,
+                timezone: dayData.timezone,
                 temp: dayData.temp,
                 desc: dayData.weather.description,
                 icon: dayData.weather.icon
