@@ -77,6 +77,10 @@ function validateDate(date) {
         try {
             console.log('Submitting form...');
 
+            // Show loading message.
+            const inputForm = document.getElementById('input-form');
+            inputForm.classList.add('loading');
+
             // Get latitude and longitude for location.
             const location = await getData(`${HOST}/latlon?loc=${encodeURI(dest)}`);
             if (location.lat === undefined || location.lon === undefined) {
@@ -107,6 +111,9 @@ function validateDate(date) {
                     <span class="results__temp-unit-letter" title="celcius">C</span></p>
                 <aside class="results__note"><p>* Forecasts only available for up to 16 days</p></aside>
             `;
+
+            // Hide loading message.
+            inputForm.classList.remove('loading');
 
         } catch (error) {
             console.log(`Request failed: ${error}`);
