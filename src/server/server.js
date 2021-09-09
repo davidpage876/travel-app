@@ -59,7 +59,10 @@ app.get('/latlon', async (req, res) => {
 
 // Request image search GET route.
 app.get('/image', async (req, res) => {
-    const q = req.query.q;
+
+    // TODO
+
+    /*const q = req.query.q;
     console.log(q);
 
     // API request url.
@@ -79,7 +82,7 @@ app.get('/image', async (req, res) => {
     } catch (error) {
         console.log('Request failed: ' + error);
         res.status(500).json({ error });
-    }
+    }*/
 });
 
 // Request weather forecast POST route.
