@@ -1,4 +1,5 @@
 import { getData, postData } from './request';
+import { getWeatherIconClassFromCode } from './weather-icon';
 
 /**
  * Validates the given destination input.
@@ -110,7 +111,7 @@ function validateDate(date) {
                 <p class="results__timezone">Timezone: ${weather.timezone}</p>
                 <h3 class="results__weather">Weather<sup>*</sup></h3>
                 <p class="results__desc">${weather.desc}</p>
-                <p class="results__icon"><span>${weather.icon}</span></p>
+                <p class="results__icon"><i class="icon wi ${getWeatherIconClassFromCode(weather.icon)}" aria-hidden="true"></i></p>
                 <p class="results__temp">
                     <span class="results__temp-degrees">${weather.temp}</span>
                     <span class="results__temp-unit-symbol" title="degrees">°</span>

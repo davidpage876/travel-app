@@ -23,7 +23,12 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
+                exclude: /node_modules/,
                 use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                type: 'asset/resource'
             }
         ]
     },
