@@ -29,13 +29,13 @@ app.get('/', (req, res) => {
 });
 
 // Request latitude and longitude for location GET route.
-// Expects parameter: ?loc=___ .
-app.get('/latlon', async (req, res) => {
-    const loc = req.query.loc;
+// Expects parameter: ?q=___ .
+app.get('/location', async (req, res) => {
+    const q = req.query.q;
 
     // API request url.
     const base = 'http://api.geonames.org/geoCodeAddressJSON';
-    const requestUrl = `${base}?q=${encodeURI(loc)}&username=${geonamesUser}`;
+    const requestUrl = `${base}?q=${encodeURI(q)}&username=${geonamesUser}`;
     console.log(requestUrl);
 
     // Make API request and send the results to client.
