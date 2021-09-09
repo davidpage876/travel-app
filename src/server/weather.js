@@ -19,7 +19,7 @@ function WeatherbitService(key, lang) {
      * @param {string} url Endpoint URL to make fetch request to.
      * @returns {Object} Response JSON data.
      */
-    this._handleRequest = async function(url) {
+    this._handleRequest = async (url) => {
         const result = await fetch(url);
         try {
             console.log(result);
@@ -54,7 +54,7 @@ function WeatherbitService(key, lang) {
      * }
      * @throws {Error} Throws if weather retrieval failed.
      */
-    this.get = async function(lat, lon, date) {
+    this.get = async (lat, lon, date) => {
         console.log(`${lat}, ${lon}, ${date}`);
 
         // Get number of days between today and date.
