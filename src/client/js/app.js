@@ -45,6 +45,7 @@ function validateDate(date) {
     const inputForm = document.getElementById('input-form');
     const destInput = inputForm.dest;
     const dateInput = inputForm.date;
+    const submitInput = inputForm.submit;
 
     // Set the default estimated arrival date to today.
     const today = new Date().toISOString().slice(0, 10);
@@ -76,6 +77,11 @@ function validateDate(date) {
         // Submit form.
         try {
             console.log('Submitting form...');
+
+            // Disable form buttons.
+            destInput.disabled = true;
+            dateInput.disabled = true;
+            submitInput.disabled = true;
 
             // Show loading message.
             const inputForm = document.getElementById('input-form');
@@ -114,6 +120,11 @@ function validateDate(date) {
 
             // Hide loading message.
             inputForm.classList.remove('loading');
+
+            // Re-enable form buttons.
+            destInput.disabled = false;
+            dateInput.disabled = false;
+            submitInput.disabled = false;
 
         } catch (error) {
             console.log(`Request failed: ${error}`);
