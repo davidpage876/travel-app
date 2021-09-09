@@ -6,7 +6,8 @@
         "date"
         "submit"
         "message";
-    grid-gap: 10px;
+        grid-gap: 50px 25px;
+    padding: 12px 0;
 
     @media only screen and (min-width: 540px) {
         grid-template-columns: 3fr 1fr;
@@ -14,6 +15,17 @@
             "dest    date"
             "submit  submit"
             "message message";
+    }
+
+    .input__field {
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+
+        & > input {
+            padding: 15px 15px;
+            height: 25px;
+        }
     }
 
     .input__field--dest {
@@ -27,22 +39,31 @@
     .input__field--submit {
         grid-area: submit;
         justify-self: center;
+        width: 100%;
+    }
+
+    @media only screen and (min-width: 540px) {
+
+        .input__field--submit {
+            max-width: 252px;
+        }
+
     }
 
     input[type="submit"] {
         width: 100%;
-        min-width: 220px;
-        padding: 15px 15px;
+        height: 58px;
         border: none;
         border-radius: 3px;
-        background: #fff;
+        background: #eee;
+        padding: 20px 10px;
+        box-shadow: 0 7px 10px rgb(0 0 0 / 40%);
     }
 
     .error,
     .loading {
         grid-area: message;
         text-align: center;
-        padding: 13px 15px;
     }
 
     .loading {
