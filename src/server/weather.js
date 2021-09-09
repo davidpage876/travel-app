@@ -22,9 +22,7 @@ function WeatherbitService(key, lang) {
     this._handleRequest = async (url) => {
         const result = await fetch(url);
         try {
-            console.log(result);
             const response = await result.json();
-            console.log(response);
             return response;
         } catch (error) {
             res.status(500).json({ error });

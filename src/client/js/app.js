@@ -74,7 +74,7 @@ function validateDate(date) {
             console.log(`Invalid input error: ${error}`);
 
             // Display error to user.
-            errorText.innerText += error;
+            errorText.innerText = error;
             return;
         }
 
@@ -94,92 +94,71 @@ function validateDate(date) {
         const results = document.getElementById('results');
         results.innerHTML = '';
 
-        // Get latitude and longitude for location.
-        let location = undefined;
+        // Function to re-enable form.
+        const enableForm = () => {
+
+            // Hide loading message.
+            inputForm.classList.remove('loading');
+
+            // Re-enable form buttons.
+            destInput.disabled = false;
+            dateInput.disabled = false;
+            submitInput.disabled = false;
+        };
+
+        // Request information for location.
         try {
-            location = await getData(`${HOST}/latlon?loc=${encodeURI(dest)}`);
+
+            // Get latitude and longitude of location.
+            const location = await getData(`${HOST}/latlon?loc=${encodeURI(dest)}`);
             if (location.lat === undefined || location.lon === undefined) {
                 throw new Error('Could not find location');
             }
-            console.log(location.lat);
-            console.log(location.lon);
-        } catch (error) {
-            console.log(`Location request failed: ${error}`);
 
-            // Display error to user.
-            errorText.innerText += error;
-        }
-
-        // Request information about location.
-        if (location) {
-
-            // Request image for location.
-            const imageRequest = getData(`${HOST}/image?loc=${encodeURI(dest)}`);
-
-            // Request weather for location and date.
-            const weatherRequest = postData(`${HOST}/weather`, {
+            // Get weather information for location and date.
+            const weather = await postData(`${HOST}/weather`, {
                 lat: location.lat,
                 lon: location.lon,
                 date: date
             });
 
-            // Handle image request.
-            (async () => {
-                try {
-                    const image = await imageRequest;
-                    console.log(image);
+            // Present results to user.
+            results.innerHTML = `
+                <h2 class="results__loc">${weather.loc}</h2>
+                <p class="results__timezone">Timezone: ${weather.timezone}</p>
+                <div id="results-img" class="results__img-container"></div>
+                <h3 class="results__weather">Weather<sup>*</sup></h3>
+                <p class="results__desc">${weather.desc}</p>
+                <p class="results__icon"><i class="icon wi ${getWeatherIconClassFromCode(weather.icon)}" aria-hidden="true"></i></p>
+                <p class="results__temp">
+                    <span class="results__temp-degrees">${weather.temp}</span>
+                    <span class="results__temp-unit-symbol" title="degrees">°</span>
+                    <span class="results__temp-unit-letter" title="celcius">C</span></p>
+                <aside class="results__note"><p>* Forecasts only available for up to 16 days</p></aside>
+            `;
 
-                    // Display results to user.
-                    results.innerHTML += `
-                        <div class="results__img-container">
-                            <img class="results__img" src="" alt="">
-                        </div>
-                    `;
+            // Re-enable form controls, allowing user to submit new query.
+            enableForm();
 
-                } catch (error) {
-                    console.log(`Image request failed: ${error}`);
+            // Get image for location.
+            const imageResults = await getData(`${HOST}/image?q=${encodeURI(weather.loc)}`);
+            console.log(imageResults);
 
-                    // Display error to user.
-                    errorText.innerText += error;
-                }
-            })();
+            // Present image.
+            const imageContainer = document.getElementById('results-img');
+            imageContainer.innerHTML = `
+                <img id="results-img" class="results__img" src="" alt="">
+            `;
 
-            // Handle weather request.
-            (async () => {
-                try {
-                    const weather = await weatherRequest;
-                    console.log(weather);
+        } catch (error) {
+            console.log(`Request failed: ${error}`);
 
-                    // Display results to user.
-                    results.innerHTML += `
-                        <h2 class="results__loc">${weather.loc}</h2>
-                        <p class="results__timezone">Timezone: ${weather.timezone}</p>
-                        <h3 class="results__weather">Weather<sup>*</sup></h3>
-                        <p class="results__desc">${weather.desc}</p>
-                        <p class="results__icon"><i class="icon wi ${getWeatherIconClassFromCode(weather.icon)}" aria-hidden="true"></i></p>
-                        <p class="results__temp">
-                            <span class="results__temp-degrees">${weather.temp}</span>
-                            <span class="results__temp-unit-symbol" title="degrees">°</span>
-                            <span class="results__temp-unit-letter" title="celcius">C</span></p>
-                        <aside class="results__note"><p>* Forecasts only available for up to 16 days</p></aside>
-                    `;
-                }
-                catch (error) {
-                    console.log(`Weather request failed: ${error}`);
+            // Display error to user.
+            errorText.innerText = error;
 
-                    // Display error to user.
-                    errorText.innerText += error;
-                }
-            })();
+            // Re-enable form controls, allowing user to resubmit.
+            enableForm();
         }
-
-        // Hide loading message.
-        inputForm.classList.remove('loading');
-
-        // Re-enable form buttons.
-        destInput.disabled = false;
-        dateInput.disabled = false;
-        submitInput.disabled = false;
     })
 }
 

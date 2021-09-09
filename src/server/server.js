@@ -58,16 +58,15 @@ app.get('/latlon', async (req, res) => {
 });
 
 // Request image search GET route.
+// Expects parameter: ?q=___ .
 app.get('/image', async (req, res) => {
-
-    // TODO
-
-    /*const q = req.query.q;
+    const q = req.query.q;
     console.log(q);
 
     // API request url.
-    const base = '';
-    const requestUrl = `${base}?key=${pixabayKey}q=${encodeURI(q)}`;
+    const base = 'https://pixabay.com/api/';
+    const options = 'order=latest&image_type=photo&orientation=horizontal&per_page=3';
+    const requestUrl = `${base}?key=${pixabayKey}&q=${encodeURI(q)}&${options}`;
     console.log(requestUrl);
 
     // Make API request and send the results to client.
@@ -82,7 +81,7 @@ app.get('/image', async (req, res) => {
     } catch (error) {
         console.log('Request failed: ' + error);
         res.status(500).json({ error });
-    }*/
+    }
 });
 
 // Request weather forecast POST route.
