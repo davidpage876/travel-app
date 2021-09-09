@@ -11,6 +11,10 @@ div {
 
 body {
     background: theme.$accent;
+
+    main {
+        min-height: 65vh;
+    }
 }
 
 .wrap {
