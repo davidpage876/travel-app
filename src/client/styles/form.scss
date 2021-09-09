@@ -4,14 +4,16 @@
     grid-template-areas:
         "dest"
         "date"
-        "submit";
+        "submit"
+        "message";
     grid-gap: 10px;
 
     @media only screen and (min-width: 540px) {
         grid-template-columns: 3fr 1fr;
         grid-template-areas:
-            "dest   date"
-            "submit submit";
+            "dest    date"
+            "submit  submit"
+            "message message";
     }
 
     .input__field--dest {
@@ -26,8 +28,15 @@
         grid-area: submit;
     }
 
+    .error {
+        grid-area: message;
+        text-align: center;
+    }
+
     .loading {
         display: none;
+        grid-area: message;
+        text-align: center;
     }
 
     &.loading .loading {
