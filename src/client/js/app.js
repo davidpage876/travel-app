@@ -142,13 +142,15 @@ function validateDate(date) {
 
             // Get image for location.
             const imageResults = await getData(`${HOST}/image?q=${encodeURI(weather.loc)}`);
-            console.log(imageResults);
 
-            // Present image.
-            const imageContainer = document.getElementById('results-img');
-            imageContainer.innerHTML = `
-                <img id="results-img" class="results__img" src="" alt="">
-            `;
+            // Present first image found.
+            if (imageResults && imageResults.hits.length > 0) {
+                const image = imageResults.hits[0];
+                const imageContainer = document.getElementById('results-img');
+                imageContainer.innerHTML = `
+                    <img id="results-img" class="results__img" src="${image.webformatURL}" alt="${image.tags}">
+                `;
+            }
 
         } catch (error) {
             console.log(`Request failed: ${error}`);
