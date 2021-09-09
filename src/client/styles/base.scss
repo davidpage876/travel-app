@@ -1,9 +1,5 @@
 @use 'theme';
 
-body {
-    background: theme.$accent;
-}
-
 h1,
 h2,
 h3,
@@ -11,4 +7,14 @@ p,
 a,
 div {
     color: #fff;
+}
+
+body {
+    background: theme.$accent;
+}
+
+.wrap {
+    max-width: 800px;
+    padding: 20px 5%;
+    margin: 0 auto;
 }

@@ -5,3 +5,11 @@
         }
     }
 }*/
+
+header {
+    text-align: center;
+
+    & > nav > ul {
+        padding: 10px 0;
+    }
+}

@@ -7,7 +7,7 @@
     <title>Travel Planner</title>
 </head>
 
-<body>
+<body class="wrap">
     <header>
         <h1>Travel Planner</h1>
         <nav>
@@ -18,19 +18,19 @@
     </header>
 
     <main>
-        <section>
-            <form id="input-form" class="input">
-                <div class="input__field">
+        <section class="input">
+            <form id="input-form" class="input-form">
+                <div class="input__field input__field--dest">
                     <label for="input-dest">Destination</label>
                     <input class="input__dest"
                         type="text" name="dest" required>
                 </div>
-                <div class="input__field">
+                <div class="input__field input__field--date">
                     <label for="input-date">Estimated arrival</label>
                     <input class="input__date"
                         type="date" name="date" required>
                 </div>
-                <div class="input__field">
+                <div class="input__field input__field--submit">
                     <input type="submit" name="submit" value="Go">
                 </div>
                 <p id="error" class="error"></p>

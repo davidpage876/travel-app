@@ -1,4 +1,30 @@
-.input {
+.input-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "dest"
+        "date"
+        "submit";
+    grid-gap: 10px;
+
+    @media only screen and (min-width: 540px) {
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas:
+            "dest   date"
+            "submit submit";
+    }
+
+    .input__field--dest {
+        grid-area: dest;
+    }
+
+    .input__field--date {
+        grid-area: date;
+    }
+
+    .input__field--submit {
+        grid-area: submit;
+    }
 
     .loading {
         display: none;
