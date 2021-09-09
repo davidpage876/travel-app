@@ -1,5 +1,7 @@
+@use 'theme';
+
 body {
-    background: #af3e3e;
+    background: theme.$accent;
 }
 
 h1,
