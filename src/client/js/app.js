@@ -148,7 +148,9 @@ function validateDate(date) {
                 const image = imageResults.hits[0];
                 const imageContainer = document.getElementById('results-img');
                 imageContainer.innerHTML = `
-                    <img id="results-img" class="results__img" src="${image.webformatURL}" alt="${image.tags}">
+                    <img class="results__img" src="${image.webformatURL}" alt="${image.tags}">
+                    <a class="results__pixabay-link" href="https://pixabay.com/"><img
+                        src="https://pixabay.com/static/img/public/medium_rectangle_b.png" alt="Pixabay"></a>
                 `;
             }
 
