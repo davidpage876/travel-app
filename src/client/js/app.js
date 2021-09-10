@@ -124,7 +124,7 @@ function validateDate(date) {
 
             // Present results to user.
             results.innerHTML = `
-                <h2 class="results__loc">${weather.loc}</h2>
+                <h2 class="results__loc">${dest}</h2>
                 <p class="results__timezone">Timezone: ${weather.timezone}</p>
                 <div id="results-img" class="results__img-container"></div>
                 <h3 class="results__weather">Weather</h3>
@@ -145,7 +145,7 @@ function validateDate(date) {
             enableForm();
 
             // Get image for location.
-            const imageResults = await getData(`${HOST}/image?q=${encodeURI(weather.loc)}`);
+            const imageResults = await getData(`${HOST}/image?q=${encodeURI(dest)}`);
 
             // Present first image found.
             if (imageResults && imageResults.hits.length > 0) {
