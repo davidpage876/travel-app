@@ -43,10 +43,14 @@ app.get('/location', async (req, res) => {
 
         const response = await fetch(requestUrl);
         const data = await response.json();
-        res.json({
-            lat: data.address.lat,
-            lon: data.address.lng
-        });
+        if (data && data.address) {
+            res.json({
+                lat: data.address.lat,
+                lon: data.address.lng
+            });
+        } else {
+            throw new Error("Could not find location");
+        }
 
     } catch (error) {
         console.log('Request failed: ' + error);
