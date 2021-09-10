@@ -111,7 +111,7 @@ function validateDate(date) {
 
             // Get latitude and longitude of location.
             const location = await getData(`${HOST}/location?q=${encodeURI(dest)}`);
-            if (location.lat === undefined || location.lon === undefined) {
+            if (location === undefined || location.lat === undefined || location.lon === undefined) {
                 throw new Error('Could not find location');
             }
 
