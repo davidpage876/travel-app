@@ -15,7 +15,7 @@
     padding-bottom: 88px;
 
     @media only screen and (min-width: 540px) {
-        grid-template-columns: 1fr 150px;
+        grid-template-columns: 1fr 167px;
         grid-template-areas:
         "loc  loc"
         "tz   tz"
@@ -43,6 +43,7 @@
     .results__desc,
     .results__icon,
     .results__temp {
+        text-align: center;
         justify-self: center;
         align-self: center;
     }
@@ -78,7 +79,7 @@
     }
 
     .results__temp-degrees {
-        font-size: 4em;
+        font-size: 4.5em;
     }
 
     .results__temp-unit-symbol {
