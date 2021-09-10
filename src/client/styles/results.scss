@@ -1,3 +1,5 @@
+@use 'theme';
+
 .results {
     display: grid;
     grid-template-columns: 1fr 215px;
@@ -55,7 +57,7 @@
     .results__img-container {
         grid-area: img;
         position: relative;
-        background: #902f2f;
+        background: theme.$accent-dark;
 
         .results__img {
             width: 100%;
