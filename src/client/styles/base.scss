@@ -1,5 +1,7 @@
 @use 'theme';
 
+@import url('https://fonts.googleapis.com/css2?family=Glory:wght@100&display=swap');
+
 h1,
 h2,
 h3,
@@ -7,6 +9,16 @@ p,
 a,
 div {
     color: #fff;
+}
+
+h1,
+h2,
+h3,
+p,
+a,
+input,
+div {
+    font-family: 'Glory', sans-serif;
 }
 
 body {
