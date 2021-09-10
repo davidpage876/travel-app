@@ -137,6 +137,10 @@ function validateDate(date) {
                 <aside class="results__note"><p>* Forecasts only available for up to 16 days</p></aside>
             `;
 
+            // Scroll to results.
+            const SCROLL_Y_OFFSET = 45;
+            window.scrollTo(0, results.offsetTop - SCROLL_Y_OFFSET);
+
             // Re-enable form controls, allowing user to submit new query.
             enableForm();
 
