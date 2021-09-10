@@ -56,7 +56,11 @@ body {
 }
 
 .wrap {
-    max-width: 830px;
+    max-width: 1200px;
     padding: 20px 5%;
     margin: 0 auto;
+
+    @media only screen and (min-width: 970px) {
+        width: 54%;
+    }
 }
