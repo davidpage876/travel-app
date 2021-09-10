@@ -15,7 +15,7 @@
     padding-bottom: 88px;
 
     @media only screen and (min-width: 540px) {
-        grid-template-columns: 1fr 180px;
+        grid-template-columns: 1fr 150px;
         grid-template-areas:
         "loc  loc"
         "tz   tz"
@@ -30,10 +30,20 @@
 
     .results__loc {
         grid-area: loc;
+        text-align: center;
     }
 
     .results__timezone {
         grid-area: tz;
+        text-align: center;
+    }
+
+    .results__weather,
+    .results__desc,
+    .results__icon,
+    .results__temp {
+        justify-self: center;
+        align-self: center;
     }
 
     .results__weather {
@@ -47,13 +57,18 @@
     .results__desc {
         grid-area: desc;
         font-size: 1.4em;
-        margin: 0 0 22px;
+        margin: 22px 0;
+
+        @media only screen and (min-width: 540px) {
+            margin: 0 0 22px;
+        }
     }
 
     .results__icon {
         grid-area: icon;
         font-size: 5em;
         margin: 0;
+        height: 65px;
     }
 
     .results__temp {
@@ -77,7 +92,12 @@
     .results__img-container {
         grid-area: img;
         position: relative;
+        height: 32vh;
         background: theme.$accent-dark;
+
+        @media only screen and (min-width: 540px) {
+            height: 55vh;
+        }
 
         .results__img {
             width: 100%;

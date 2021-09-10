@@ -127,7 +127,7 @@ function validateDate(date) {
                 <h2 class="results__loc">${weather.loc}</h2>
                 <p class="results__timezone">Timezone: ${weather.timezone}</p>
                 <div id="results-img" class="results__img-container"></div>
-                <h3 class="results__weather">Weather<sup>*</sup></h3>
+                <h3 class="results__weather">Weather</h3>
                 <p class="results__desc">${weather.desc}</p>
                 <p class="results__icon"><i class="icon wi ${getWeatherIconClassFromCode(weather.icon)}" aria-hidden="true"></i></p>
                 <p class="results__temp">
