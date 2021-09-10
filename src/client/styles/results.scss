@@ -55,9 +55,12 @@
     .results__img-container {
         grid-area: img;
         position: relative;
+        background: #902f2f;
 
         .results__img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .results__pixabay-link {
@@ -67,6 +70,7 @@
 
             & > img {
                 width: 100px;
+                vertical-align: bottom;
 
                 @media only screen and (min-width: 540px) {
                     width: 130px;
