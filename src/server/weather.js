@@ -68,12 +68,15 @@ function WeatherbitService(key, lang) {
             console.log(requestUrl);
             const response = await this._handleRequest(requestUrl);
             const dayData = response.data[delta - 1];
-            if (dayData.city_name === undefined) {
+            if (dayData === undefined) {
+                throw new Error('Forecast not available');
+            }
+            if (response.city_name === undefined) {
                 throw new Error('Could not find location');
             }
             const summary = {
-                loc: dayData.city_name,
-                timezone: dayData.timezone,
+                loc: response.city_name,
+                timezone: response.timezone,
                 temp: dayData.temp,
                 desc: dayData.weather.description,
                 icon: dayData.weather.icon
