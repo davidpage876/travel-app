@@ -73,6 +73,14 @@
         cursor: pointer;
     }
 
+    input[type=submit]:disabled {
+        opacity: 40%;
+        background: #222;
+        color: #fff;
+        box-shadow: none;
+        cursor: unset;
+    }
+
     .error,
     .loading {
         grid-area: message;
