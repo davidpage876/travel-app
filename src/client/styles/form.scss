@@ -6,7 +6,7 @@
         "date"
         "submit"
         "message";
-        grid-gap: 50px 25px;
+    grid-gap: 50px 25px;
     padding: 12px 0;
 
     @media only screen and (min-width: 540px) {
@@ -16,6 +16,10 @@
             "submit  submit"
             "message message";
         padding-top: 35px;
+    }
+
+    input:hover {
+        outline: solid 1px #222;
     }
 
     .input__field {
@@ -46,7 +50,7 @@
     @media only screen and (min-width: 540px) {
 
         .input__field--submit {
-            max-width: 252px;
+            max-width: 222px;
         }
 
     }
@@ -59,6 +63,12 @@
         background: #eee;
         padding: 20px 10px;
         box-shadow: 0 7px 10px rgb(0 0 0 / 40%);
+    }
+
+    input[type="submit"]:hover {
+        background: #222;
+        color: #fff;
+        outline: none;
     }
 
     .error,
