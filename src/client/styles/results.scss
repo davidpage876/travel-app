@@ -2,17 +2,31 @@
 
 .results {
     display: grid;
-    grid-template-columns: 1fr 215px;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
-    "loc  loc"
-    "tz   tz"
-    "img  wth"
-    "img  desc"
-    "img  icon"
-    "img  temp"
-    "img  temp"
+    "loc   loc"
+    "tz    tz"
+    "img   img"
+    "wth   wth"
+    "icon  temp"
+    "desc  desc"
     "note  note";
     grid-gap: 5px 20px;
+    padding-bottom: 88px;
+
+    @media only screen and (min-width: 540px) {
+        grid-template-columns: 1fr 180px;
+        grid-template-areas:
+        "loc  loc"
+        "tz   tz"
+        "img  wth"
+        "img  temp"
+        "img  temp"
+        "img  icon"
+        "img  desc"
+        "note  note";
+        grid-gap: 5px 32px;
+    }
 
     .results__loc {
         grid-area: loc;
@@ -24,25 +38,31 @@
 
     .results__weather {
         grid-area: wth;
+
+        sup {
+            font-weight: 100;
+        }
     }
 
     .results__desc {
         grid-area: desc;
         font-size: 1.4em;
+        margin: 0 0 22px;
     }
 
     .results__icon {
         grid-area: icon;
-        font-size: 4em;
+        font-size: 5em;
         margin: 0;
     }
 
     .results__temp {
         grid-area: temp;
+        margin: 8px 0 0;
     }
 
     .results__temp-degrees {
-        font-size: 5em;
+        font-size: 4em;
     }
 
     .results__temp-unit-symbol {
@@ -69,13 +89,18 @@
             position: absolute;
             bottom: 0;
             right: 0;
+            opacity: 90%;
+
+            &:hover {
+                opacity: 100%;
+            }
 
             & > img {
-                width: 100px;
+                width: 90px;
                 vertical-align: bottom;
 
                 @media only screen and (min-width: 540px) {
-                    width: 130px;
+                    width: 110px;
                 }
             }
         }
@@ -83,6 +108,7 @@
 
     .results__note {
         grid-area: note;
+        text-align: center;
     }
 
 }
